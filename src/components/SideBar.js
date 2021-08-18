@@ -16,7 +16,7 @@ function SideBar() {
         )
         );
     }, []);
-console.log(channels)
+
  
     return (
         <div className="sidebar">
@@ -32,7 +32,7 @@ console.log(channels)
                 <hr></hr>
                 <h3 className="add-channel">Add Channel</h3>
                 {channels.map(channel => (
-                    <SideBarElements title={channel.title} key={channel.id} />
+                    <SideBarElements title={channel.title} id={channel.id} />
                 ))}
                 </div>
             
