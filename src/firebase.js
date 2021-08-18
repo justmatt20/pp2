@@ -15,8 +15,15 @@ require('dotenv').config();
   // if (firebase.apps.length === 0) {
   //   firebase.initializeApp(firebaseConfig);
   // }
-
- ADD FIREBASE CONFIG
+  const firebaseConfig = {
+    apiKey: "AIzaSyA3lE134cCnvO2wYbF37i8ILadTMAZIYtM",
+    authDomain: "personal-project-part-2.firebaseapp.com",
+    projectId: "personal-project-part-2",
+    storageBucket: "personal-project-part-2.appspot.com",
+    messagingSenderId: "66891508397",
+    appId: "1:66891508397:web:ce2f593682ebacaa9a7424",
+    measurementId: "G-VDDQYVKL63"
+  };
 
   //   if (firebase.apps.length === 0) {
   //   firebase.initializeApp(firebaseConfig);

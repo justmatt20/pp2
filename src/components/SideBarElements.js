@@ -23,6 +23,7 @@ function SideBarElements({title, id, addChannelElement}) {
         return (
         <div className="sidebarelements" onClick={addChannelElement ? addChannel : selectChannel}>
        {/* <Link to="/channel/:channelId"> <h3><span className="hashtag">#</span>{title}</h3></Link> */}
+       
        <h3><span className="hashtag">#</span>{title}</h3>
         </div>
     )

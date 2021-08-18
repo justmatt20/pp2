@@ -6,7 +6,7 @@ function Comments({comment, timestamp, user, image}) {
             <img src={image} alt=""/>
             <dov className="comment-data">
                 <h4>
-                    {user} timestamp...
+                    {user} <span className="timestamp ">{new Date(timestamp?.toDate().toUTCString())}</span>
                 </h4>
                 <p>{comment}</p>
             </dov>
