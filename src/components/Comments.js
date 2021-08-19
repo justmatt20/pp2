@@ -9,9 +9,10 @@ function Comments({comment, user, image, timestamp}) {
             <div className="comment-data">
                 <h4>
                     {user} 
-                    <span className="timestamp ">{new Date(timestamp.toDate()).toUTCString()}</span>
+                    <span className="timestamp ">{new Date(timestamp && timestamp.toDate()).toUTCString()}</span>
                 </h4>
                 <p>{comment}</p>
+                
             </div>
 
         </div>

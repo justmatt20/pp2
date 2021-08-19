@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useParams} from 'react'
 import {Link, useHistory} from 'react-router-dom';
 import db from '../firebase';
 
 function SideBarElements({title, id, addChannelElement}) {
+  
     const history = useHistory();
     const selectChannel = () => {
             if(id){
@@ -16,8 +17,9 @@ function SideBarElements({title, id, addChannelElement}) {
         const channelName = prompt('Enter a channel name');
         if(channelName){
             db.collection('channels').add({
-                title :channelName,
+                title : channelName,
             })
+            
         }
     }
         return (

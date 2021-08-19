@@ -19,7 +19,7 @@ function SideBar() {
         );
     }, []);
 
-    const addChannel = () => {
+    const addChannel = (e) => {
         const channelName = prompt('Enter a channel name');
         if(channelName){
             db.collection('channels').add({

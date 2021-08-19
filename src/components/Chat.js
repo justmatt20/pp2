@@ -4,14 +4,17 @@ import SideBar from './SideBar';
 import Code from './Code';
 import db from '../firebase';
 import Comments from './Comments';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 import Input from './Input';
+import SandBox from './SandBox';
+
 
 
 function Chat() {
     const {channelId} = useParams();
     const [channel, setChannel] = useState(null)
     const [messages, setMessages] = useState([]);
+    
   
 
     const getChannel = () => {
@@ -24,34 +27,17 @@ function Chat() {
         console.log(channel)
     }
 
-    // const getComments = () => {
-       
-    //     db.collection('rooms')
-    //     .doc(channelId)
-    //     .collection('comments')
-    //     .orderBy('timestamp', 'asc')
-    //     .onSnapshot((snapshot)=>{
-    //         const messages = snapshot.docs.map(docs => docs.data());
-    //         setMessages(messages)
-    //     })
-    //     console.log(messages)
+    // const sendComment = (text) => {
+    //     if(channelId){
+    //         const payload = {
+    //             text: text,
+    //             timestamp: firebase.firestore.Timestamp.now(),
+    //             user: user.displayName,
+    //             image: user.photoURL
+    //         }
+    //         db.collection("channels").doc(channelId).collection('comments').add(payload);
+    //     }
     // }
-
-//     const getComments = () => {
-//         // if(channelId)
-//         db.collection("channels")
-//         .doc(channelId)
-//         .collection('comments')
-//     .onSnapshot(function(snap) {
-
-// 	snap.forEach(function(doc) {
-// 		const messages = doc.data();;
-//         setMessages(messages)
-//         console.log(doc.data)
-// 	});
-// });
-// console.log(messages)
-//     }
  const getComments = () => {
     db.collection('channels')
     .doc(channelId)
@@ -74,10 +60,7 @@ function Chat() {
         getComments();
     }, [channelId])
 
-    // (messages.map((message)=>{message.comment}))
         return (
-            
-                
             
         <div className="chat">
             <SideBar />
@@ -86,12 +69,11 @@ function Chat() {
             {/* optional chaining */}
             
             </div>
-               
-          
             <Code />
+            <SandBox />
             <div className="chat-sidebar">
             {
-                    // messages.length > 0 &&
+                    messages.length > 0 &&
                     messages.map((data)=>(
                         <Comments
                             comment={data?.comment}

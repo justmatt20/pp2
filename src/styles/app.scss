@@ -1,3 +1,206 @@
-body {
-    overflow: hidden;
+@mixin center () {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin button ($height, $width) {
+    background-color: $main-green;
+    color: #211752;
+    border-radius: 4rem;
+    border: none;
+    height: $height;
+    width: $width;
+    font-family: $text-two;
+    font-size: 1.4em;
+}
+
+$main-green: #14d18f;
+$blue: #211752;
+$main-text: 'Spectral', serif;
+$text-two: 'Karla', sans-serif;
+$underline: .4em;
+
+@import './header';
+@import './login';
+@import './';
+
+body{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.home {
+   background-color: $blue;
+}
+nav {
+    @include center;
+    justify-content: space-around;
+    flex-grow: 1;
+    background-color: rgba(9, 9, 54, 0.877);
+    // position: fixed;
+
+    .menu{
+        width: 30vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0;
+        color: white;
+        font-family: $text-two;
+        font-size: 1.5rem;
+        
+    }
+
+    li {
+        list-style: none;
+        
+        
+    }
+    img {
+        width: 4rem;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        
+    }
+    .login {
+        margin-left: 40rem;
+    }
+    .google-auth {
+        @include button(2rem, 6rem);
+        @include center();
+        align-items: center;
+        font-size: 1rem;;
+    }
+    .auth-menu{
+        @include center();
+        flex-direction: column;
+        align-items: center;
+    }
+    .display-name{
+        font-family: $text-two;
+        color:white;
+        margin-right: 6px;
+    }
+    .logged-in {
+        @include center();
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}
+
+.home {
+    height: 70vh;
+    // width: 100vw;
+    @include center;
+    align-items: center ;
+    flex-direction: column;
+    color: white;
+
+    .name {
+        font-size: 3em;
+        font-family: $main-text;
+        margin: 0;
+    }
+    h1 {
+        margin: 0;
+    }
+    .typewriter {
+        font-size: 2em;
+        font-family: 'Karla', sans-serif;
+        color: $main-green;
+    }
+    p {
+        font-size: 1.4em;
+        margin-top: 2rem;
+        font-family: 'Karla', sans-serif;
+        color: white;
+    }
+    .hq{
+        color: $main-green;
+    }
+    strong {
+        color: rgb(235, 14, 187);
+    }
+    .main-btn {
+        @include button(3rem, 12rem);
+        margin-top: 1rem;
+    }
+
+}
+
+
+.info-block {
+    margin-top: 3rem;
+    height: 80vh;
+    width: auto;
+    @include center();
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    
+h1{
+    @include center();
+    align-items: center;
+    
+    font-family: $main-text;
+    font-size: 3rem;
+    color: $blue;
+    text-decoration: underline .5rem $main-green;
+    text-underline-offset: .4em;
+
+}
+    
+p{
+    height: 10vh;
+    width: 50vw;
+    line-height: 2rem;
+    font-family: $text-two;
+    font-size: 1.4rem;
+    color:$blue;
+}
+.video{
+    height: 20rem;
+    width: 30rem;
+    @include center();
+    align-items: center;
+}
+.try-button{
+    @include button(3rem, 12rem);
+    margin-bottom: 2rem;
+}
+}
+
+.quote-block{
+    width: auto;
+    height: 50vh;
+    @include center();
+    align-items: center;
+    flex-direction: column;
+
+
+.litmus {
+    width: 70vw;
+    height: 10vh;
+    border-radius: 6px;
+    @include center();
+    align-items: center;
+    padding-left: 2px;
+    background-color: $main-green;
+    color:$blue;
+    font-family: $text-two;
+    font-size: 1.5rem;
+}
+.bottom-cta {
+    @include button(3rem, 12rem);
+    margin-top: 2rem;
+    
+}
+}
+footer {
+    font-family: $text-two;
+    color: white;
+    font-size: 1rem;
+    @include center();
 }

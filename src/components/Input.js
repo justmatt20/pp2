@@ -19,6 +19,7 @@ function Input({channelTitle, channelId}) {
             image: user?.photoURL
             })
         }
+        setText('')
     }
 
     // const inputChange = (e) =>{
