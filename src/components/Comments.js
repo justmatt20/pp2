@@ -1,15 +1,18 @@
-import React from 'react'
+import React from 'react';
 
-function Comments({comment, timestamp, user, image}) {
+
+
+function Comments({comment, user, image, timestamp}) {
     return (
         <div className="comment-screen">
             <img src={image} alt=""/>
-            <dov className="comment-data">
+            <div className="comment-data">
                 <h4>
-                    {user} <span className="timestamp ">{new Date(timestamp?.toDate().toUTCString())}</span>
+                    {user} 
+                    <span className="timestamp ">{new Date(timestamp.toDate()).toUTCString()}</span>
                 </h4>
                 <p>{comment}</p>
-            </dov>
+            </div>
 
         </div>
     )

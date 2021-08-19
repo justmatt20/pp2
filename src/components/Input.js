@@ -4,7 +4,7 @@ import {useStateValue} from '../StateProvider'
 import firebase from 'firebase';
 
 
-function Input({channelName, channelId}) {
+function Input({channelTitle, channelId}) {
     const [text, setText] = useState("");
     const [{user}] = useStateValue();
     const sendComment = (e) => {
@@ -14,7 +14,7 @@ function Input({channelName, channelId}) {
             .doc(channelId)
             .collection('comments').add({
             comment: text,
-            timestamp: firebase.firestore.FieldValue.server,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             user: user?.displayName,
             image: user?.photoURL
             })
@@ -28,7 +28,7 @@ function Input({channelName, channelId}) {
     return (
         <div className="chat-input">
             <form>
-                <input value={text} onChange={(e)=>setText(e.target.value)}placeholder={`Message #${channelName?.toLowerCase()}`}/>
+                <input value={text} onChange={(e)=>setText(e.target.value)}placeholder={`Message #${channelTitle?.toLowerCase()}`}/>
                 <button type="submit" onClick={sendComment}>send</button>
             </form>
         </div>

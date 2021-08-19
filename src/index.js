@@ -10,11 +10,13 @@ import reducer, {initialState} from './reducer'
 ReactDOM.render(
 
   <React.StrictMode>
+    <StateProvider initialState={initialState} reducer={reducer}>
     <HashRouter>
-      <StateProvider initialState={initialState} reducer={reducer}>
+      
     <App />
-    </StateProvider>
+    
     </HashRouter>
+    </StateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
