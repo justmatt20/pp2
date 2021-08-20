@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import {css} from "@emotion/css";
 const OpenAI = require('openai-api');
 require('dotenv').config();
+
 
 export default function Code() {
 
@@ -46,7 +48,8 @@ useEffect(() => {(async () => {
    
     <div className="App">
       <div>
-      <input
+      <textarea className={css `
+      width: 40vw;`}
       placeholder="ex. build an app that says 'Hooli' with an input field.  Add two buttons, one that says 'Hooli Search' and one that says 'I'm feeling Unlucky'"
           type="text"
           value={query}

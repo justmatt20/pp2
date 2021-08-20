@@ -1,13 +1,23 @@
 import React from 'react';
 import routes from './routes'
-import Home from './components/Home';
 import Login from './components/Login';
 import {useStateValue} from './StateProvider';
+import {css} from '@emotion/css'
+import {Global} from '@emotion/react';
+
 
 function App() {
 const [{user}, dispatch] = useStateValue();
   return (
-    <div className="app">
+    <div >
+     <Global
+      styles={{
+        body: {
+          margin: 0,
+          padding: 0
+        }
+      }}
+    />
       {!user ? (
         <Login />
       ) : <> 

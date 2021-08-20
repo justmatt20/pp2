@@ -4,9 +4,10 @@ import SideBar from './SideBar';
 import Code from './Code';
 import db from '../firebase';
 import Comments from './Comments';
-import firebase from 'firebase';
 import Input from './Input';
 import SandBox from './SandBox';
+import {css} from '@emotion/css'
+
 
 
 
@@ -42,6 +43,7 @@ function Chat() {
     db.collection('channels')
     .doc(channelId)
     .collection('comments')
+    .orderBy('timestamp', 'asc')
     .onSnapshot(snapshot => (
         setMessages(snapshot.docs.map((doc) => ({
             id: doc.id, 
@@ -62,10 +64,16 @@ function Chat() {
 
         return (
             
-        <div className="chat">
+        <div className={css`
+        margin: 0;`}>
+            
             <SideBar />
             <div className="chat-header">
-            <h3 className="channel-name">#{channel?.title}</h3>
+            <h3 className={css`
+       color: #7953f5`}>
+           <span className={css`
+       color: #434b57`}>#</span>
+           {channel?.title}</h3>
             {/* optional chaining */}
             
             </div>

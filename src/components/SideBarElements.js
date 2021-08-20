@@ -1,6 +1,7 @@
 import React, {useParams} from 'react'
 import {Link, useHistory} from 'react-router-dom';
 import db from '../firebase';
+import {css} from '@emotion/css'
 
 function SideBarElements({title, id, addChannelElement}) {
   
@@ -23,10 +24,11 @@ function SideBarElements({title, id, addChannelElement}) {
         }
     }
         return (
-        <div className="sidebarelements" onClick={addChannelElement ? addChannel : selectChannel}>
+        <div className={css`
+        cursor: pointer;`} onClick={addChannelElement ? addChannel : selectChannel}>
        {/* <Link to="/channel/:channelId"> <h3><span className="hashtag">#</span>{title}</h3></Link> */}
        
-       <h3><span className="hashtag">#</span>{title}</h3>
+       <h3 ><span>#</span>{title}</h3>
         </div>
     )
 }

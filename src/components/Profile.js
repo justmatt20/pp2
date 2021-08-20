@@ -9,7 +9,7 @@ function Profile() {
         <div>
             <Link to="/"><p>Home</p></Link>
             <h1>{user?.displayName}</h1>
-            <button>Change your profile image</button>
+            <button>Change your profile</button>
             <div>
                 <h3>Your Saved Code:</h3>
             </div>

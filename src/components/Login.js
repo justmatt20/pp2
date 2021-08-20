@@ -22,9 +22,11 @@ const [state, dispatch] = useStateValue();
         <div className="login">
             <div className="login-box">
                 <img src="" alt=""/>
-                <h1>Sign in to Code Collab Club!</h1>
+                <h1>Welcome to Code Collab Club!</h1>
+                <h3 className="about">Where makers ideate, create, and collaborate in real time.</h3>
+                <h4>Powered by GPT3</h4>
                 <p>codecollab.club</p>
-                <button onClick={logIn}>Sign in with Google</button>
+                <button onClick={logIn}>Join the club!</button>
             </div>
         </div>
     )

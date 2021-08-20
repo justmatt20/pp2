@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import db from '../firebase';
 import {useStateValue} from '../StateProvider'
 import firebase from 'firebase';
+import {css} from '@emotion/css'
 
 
 function Input({channelTitle, channelId}) {
@@ -30,7 +31,8 @@ function Input({channelTitle, channelId}) {
         <div className="chat-input">
             <form>
                 <input value={text} onChange={(e)=>setText(e.target.value)}placeholder={`Message #${channelTitle?.toLowerCase()}`}/>
-                <button type="submit" onClick={sendComment}>send</button>
+                <button className={css`
+                display: none !important;`}type="submit" onClick={sendComment}>send</button>
             </form>
         </div>
     )

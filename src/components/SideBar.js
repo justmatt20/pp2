@@ -3,6 +3,7 @@ import SideBarElements from './SideBarElements'
 import db from '../firebase'
 import Header from './Header';
 import {useStateValue} from '../StateProvider';
+import {css} from '@emotion/css';
 
 
 function SideBar() {
@@ -13,7 +14,6 @@ function SideBar() {
             setChannel(snapshot.docs.map((doc) => ({
                 id: doc.id, 
                 title: doc.data().title,
-
             })))
         )
         );
@@ -21,6 +21,7 @@ function SideBar() {
 
     const addChannel = (e) => {
         const channelName = prompt('Enter a channel name');
+
         if(channelName){
             db.collection('channels').add({
                 title :channelName,
@@ -29,21 +30,27 @@ function SideBar() {
     }
  
     return (
-        <div className="sidebar">
-            <div className="sidebar-header">
-                <Header />
-            </div>
-            <div className="sidebar-top">
+        <div >
+             <Header />
+            
+            <div  className={css`
+            width: 15vw;
+            margin-left: 5px;
+            display: flex;
+            justify-content: center;`}>
                 <div className="info">
                     <h2>Code Collab Club</h2>
                 <div className="green-circle"></div>
-                <h3>{user?.displayName}</h3>
+                <h3 className={css`
+            font-size: 18px;
+            
+            `}>{user?.displayName}</h3>
                 </div>
                 
                 </div>
                 <div className="channels">
                 <hr></hr>
-                <h3 className="add-channel" onClick={addChannel}>Add Channel</h3>
+                <h3 className={css`cursor: pointer;`} onClick={addChannel}>Add Channel</h3>
                 {channels.map(channel => (
                     <SideBarElements title={channel.title} id={channel.id} />
                 ))}
