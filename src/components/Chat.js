@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import SideBar from './SideBar';
+// import SideBar from './SideBar';
 import Code from './Code';
 import db from '../firebase';
 import Comments from './Comments';
@@ -67,10 +67,10 @@ function Chat() {
         <div className={css`
         margin: 0;`}>
             
-            <SideBar />
+            {/* <SideBar /> */}
             <div className="chat-header">
             <h3 className={css`
-       color: #7953f5`}>
+       color: #7953f5;`}>
            <span className={css`
        color: #434b57`}>#</span>
            {channel?.title}</h3>

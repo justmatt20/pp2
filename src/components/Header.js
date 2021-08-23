@@ -1,11 +1,35 @@
 import React from 'react'
 import {useStateValue} from '../StateProvider';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import {auth} from '../firebase';
 import {css} from '@emotion/css'
+import Login from './Login';
 
 
 function Header() {
     const [{user}] = useStateValue();
+    const history = useHistory();
+    // const logout = async (e) => {
+    //     e.preventDefault();
+  
+    //     await auth().signOut().then(function() {
+    //       console.log("Successfully signed out.")
+  
+    //     }).catch(function(error) {
+    //       console.log(error)
+    //       console.log("An error occurred")
+    //     });
+  
+    //     console.log(user)
+    //     // history.push(<Login />);
+    //   }
+
+    const logout = () => {
+        return auth.user && (
+            <button onClick={() => auth.signOut()}>Log out</button>
+        )
+    }
+    
     return (
         <div className={css`
         display: flex;
@@ -29,10 +53,11 @@ function Header() {
                 text-align: center;`}placeholder="Search Code Collab Club"/>
             </div>
             <div className="header-right"></div>
-            <p className={css `
+            {/* <p className={css `
             color: white;
             text-decoration: none;
-            `}>Log out</p>
+            `} onClick={logout}>Log out</p> */}
+            {logout}
         </div>
     )
 }

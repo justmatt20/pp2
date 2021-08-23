@@ -31,10 +31,10 @@ function SideBar() {
  
     return (
         <div >
-             <Header />
+            <Header />
             
             <div  className={css`
-            width: 15vw;
+            width: 20vw;
             margin-left: 5px;
             display: flex;
             justify-content: center;`}>

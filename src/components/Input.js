@@ -30,7 +30,9 @@ function Input({channelTitle, channelId}) {
     return (
         <div className="chat-input">
             <form>
-                <input value={text} onChange={(e)=>setText(e.target.value)}placeholder={`Message #${channelTitle?.toLowerCase()}`}/>
+                <input className={css `
+                width: 40vw;
+                border: 2px solid black;`}alue={text} onChange={(e)=>setText(e.target.value)}placeholder={`Message #${channelTitle?.toLowerCase()}`}/>
                 <button className={css`
                 display: none !important;`}type="submit" onClick={sendComment}>send</button>
             </form>
