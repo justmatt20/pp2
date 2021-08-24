@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {css} from "@emotion/css";
+import SandBox from './SandBox';
+
 const OpenAI = require('openai-api');
 require('dotenv').config();
 
 
-export default function Code() {
+export default function Code(channelId) {
 
 
 
@@ -14,6 +16,7 @@ const [data, setData] = useState('');
 const [query, setQuery] = useState();
 const [search, setSearch] = useState();
 const [isLoading, setIsLoading] = useState(false);
+
 
 
 useEffect(() => {(async () => {
@@ -37,25 +40,34 @@ useEffect(() => {(async () => {
    console.log(data)
    
 }})();
-
+setQuery('')
 }, [search]);
 
 // buttonClick = () => {
 //   e.preventDefault()
 //   e => setQuery(e.target.value)
 // }
+
+
+
   return (
    
-    <div className="App">
-      <div>
-      <textarea className={css `
-      width: 40vw;`}
+    <div 
+    className={css `display: flex; justify-content: center; align-items: center; flex-direction: column;`}
+  
+ 
+    >
+      <div 
+      className={css `display: flex; justify-content: center; align-content: center; flex-direction: column;`}>
+      <textarea 
+      className={css `display: flex; height: 5vh; width: 40vw; `}
       placeholder="ex. build an app that says 'Hooli' with an input field.  Add two buttons, one that says 'Hooli Search' and one that says 'I'm feeling Unlucky'"
           type="text"
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
-        <button
+        <div className={css` display: flex; justify-content: center;`}>
+        <button  className={css ``}
           type="button"
           onClick={() =>
             setSearch(query)
@@ -63,23 +75,23 @@ useEffect(() => {(async () => {
         >
           Generate
         </button>
+        </div>
 
           {/* <h4>Here's some code we generated for you:</h4>   */}
           {isLoading ? (
             <div>Generating your code...</div>
          ) : (
-           <span>
+           <span className={css `width: 40vw; color: #3D8D8D8; `}>
            {data}
            </span>
            )}
            
       </div>
-      <button>Save Code</button>
 
       <div>
         <p className="tip">Remember to thoroughly read through your code.  Check and edit it in the sandbox.</p>
       </div>
-     
+     <SandBox />
     </div>
   );
 }

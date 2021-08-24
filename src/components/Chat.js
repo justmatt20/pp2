@@ -43,13 +43,14 @@ function Chat() {
     db.collection('channels')
     .doc(channelId)
     .collection('comments')
-    .orderBy('timestamp', 'asc')
+    .orderBy('timestamp', 'desc')
     .onSnapshot(snapshot => (
         setMessages(snapshot.docs.map((doc) => ({
             id: doc.id, 
             comment: doc.data().comment,
             timestamp: doc.data().timestamp,
-            image: doc.data().image
+            image: doc.data().image,
+            user: doc.data().user
 
         })))
     )
@@ -65,21 +66,42 @@ function Chat() {
         return (
             
         <div className={css`
-        margin: 0;`}>
-            
-            {/* <SideBar /> */}
-            <div className="chat-header">
+        margin: 0;
+        height: 87vh;
+        position: relative;
+        
+       
+       `}>
+           <div 
+        //    className={css `width: 70%; display: flex; justify-content: center; align-content: center;`}
+        className={css `position: absolute; height: 80%; width: 65%; bottom: 0; margin: 0; `}
+           >
+           <Code />
+           </div>
+           
+          <div className={css`height: 70vh; width: 30vw; position: absolute; right: 0; bottom: 0; `}
+        //   className={css` height: 100%; width: 36%; position: relative;  float: right;  background-color: #8766F5; padding-left: 4px; `}
+          >
+      <div 
+     
+      >
+            <div 
+            className={css`display: flex; flex-direction: column; margin-bottom: 1rem;`}
+            >
             <h3 className={css`
-       color: #7953f5;`}>
+       color: #ffffff;`}>
            <span className={css`
        color: #434b57`}>#</span>
            {channel?.title}</h3>
             {/* optional chaining */}
             
+            
+         
             </div>
-            <Code />
-            <SandBox />
-            <div className="chat-sidebar">
+            <div  className={css `position: absolute; bottom: 0;
+        `}
+            
+            >
             {
                     messages.length > 0 &&
                     messages.map((data)=>(
@@ -92,9 +114,8 @@ function Chat() {
                     ))
                 }
                 
-            </div>
-            <div>
-                <Input channelTitle={channel?.title} channelId={channelId}/>
+          
+                <Input  channelTitle={channel?.title} channelId={channelId}/>
                 
             </div>
             {/* <div className="comment-screen">
@@ -108,7 +129,8 @@ function Chat() {
             </div> */}
             {/* <Input channelTitle={channel?.title} channelId={channelId}/> */}
         {/* </div> */}
-        
+        </div>
+        </div>
         </div>
     )
 }

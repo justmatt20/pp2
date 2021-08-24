@@ -33,7 +33,7 @@ function SideBar() {
         <div >
             <Header />
             
-            <div  className={css`
+            {/* <div  className={css`
             width: 20vw;
             margin-left: 5px;
             display: flex;
@@ -47,10 +47,10 @@ function SideBar() {
             `}>{user?.displayName}</h3>
                 </div>
                 
-                </div>
+                </div> */}
                 <div className="channels">
-                <hr></hr>
-                <h3 className={css`cursor: pointer;`} onClick={addChannel}>Add Channel</h3>
+                {/* <hr></hr> */}
+                <h3 className={css`cursor: pointer; margin-left: 2rem; color: #D8D8D8`} onClick={addChannel}>Add Channel</h3>
                 {channels.map(channel => (
                     <SideBarElements title={channel.title} id={channel.id} />
                 ))}

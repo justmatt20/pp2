@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {useStateValue} from '../StateProvider';
 import {Link} from 'react-router-dom';
@@ -17,4 +18,4 @@ function Profile() {
     )
 }
 
-export default Profile
+export default Profile;
