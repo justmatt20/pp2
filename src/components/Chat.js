@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 // import SideBar from './SideBar';
-import Code from './Code';
+// import Code from './Code';
 import db from '../firebase';
 import Comments from './Comments';
 import Input from './Input';
-import SandBox from './SandBox';
 import {css} from '@emotion/css'
+import EmailCode from './EmailCode';
 
 
 
@@ -15,6 +15,8 @@ function Chat() {
     const {channelId} = useParams();
     const [channel, setChannel] = useState(null)
     const [messages, setMessages] = useState([]);
+ 
+    
     
   
 
@@ -28,22 +30,11 @@ function Chat() {
         console.log(channel)
     }
 
-    // const sendComment = (text) => {
-    //     if(channelId){
-    //         const payload = {
-    //             text: text,
-    //             timestamp: firebase.firestore.Timestamp.now(),
-    //             user: user.displayName,
-    //             image: user.photoURL
-    //         }
-    //         db.collection("channels").doc(channelId).collection('comments').add(payload);
-    //     }
-    // }
  const getComments = () => {
     db.collection('channels')
     .doc(channelId)
     .collection('comments')
-    .orderBy('timestamp', 'desc')
+    .orderBy('timestamp', 'asc')
     .onSnapshot(snapshot => (
         setMessages(snapshot.docs.map((doc) => ({
             id: doc.id, 
@@ -58,6 +49,7 @@ function Chat() {
  }
 
 
+
     useEffect(()=>{
         getChannel();
         getComments();
@@ -65,43 +57,20 @@ function Chat() {
 
         return (
             
-        <div className={css`
-        margin: 0;
-        height: 87vh;
-        position: relative;
-        
-       
-       `}>
-           <div 
-        //    className={css `width: 70%; display: flex; justify-content: center; align-content: center;`}
-        className={css `position: absolute; height: 80%; width: 65%; bottom: 0; margin: 0; `}
-           >
-           <Code />
-           </div>
-           
-          <div className={css`height: 70vh; width: 30vw; position: absolute; right: 0; bottom: 0; `}
-        //   className={css` height: 100%; width: 36%; position: relative;  float: right;  background-color: #8766F5; padding-left: 4px; `}
-          >
-      <div 
-     
-      >
-            <div 
-            className={css`display: flex; flex-direction: column; margin-bottom: 1rem;`}
-            >
-            <h3 className={css`
-       color: #ffffff;`}>
-           <span className={css`
-       color: #434b57`}>#</span>
+        <div className={css``}>
+           <div className={css ` `}>
+            <h3 className={css` color: #7953f5; margin: 10px;`}>
+           <span className={css``}>#</span>
            {channel?.title}</h3>
+           <Link to='/emails'><h4 className={css`  margin: 10px; text-decoration: none;`}>{channel?.title} Emails</h4></Link>
             {/* optional chaining */}
-            
-            
-         
             </div>
-            <div  className={css `position: absolute; bottom: 0;
-        `}
-            
-            >
+            <div  className={css `height: auto; width: fit;
+    padding: 20px;
+    margin-left: 230px;
+    margin-right: 20px;
+    padding-bottom: 30px;
+    overflow: auto;  `}>
             {
                     messages.length > 0 &&
                     messages.map((data)=>(
@@ -113,23 +82,9 @@ function Chat() {
                         />
                     ))
                 }
-                
-          
                 <Input  channelTitle={channel?.title} channelId={channelId}/>
                 
-            </div>
-            {/* <div className="comment-screen">
-            <img src={image} alt=""/>
-            <div className="comment-data">
-                <h4>
-                    {user} 
-                    <span className="timestamp ">{new Date(timestamp?.toDate().toUTCString())}</span>
-                </h4>
-                <p>{comment}</p>
-            </div> */}
-            {/* <Input channelTitle={channel?.title} channelId={channelId}/> */}
-        {/* </div> */}
-        </div>
+           
         </div>
         </div>
     )

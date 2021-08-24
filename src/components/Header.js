@@ -29,12 +29,14 @@ function Header() {
     return (
         <div className={css`
         display: flex;
-        width: 100vw !important;
+        width: 100 !important;
+        height: 139px;
         align-items: center;
         justify-content: space-between;
         padding: 20px;
-        background-color: #434b57;
+        background-color: #7953f5;
         margin: auto;
+        overflow: hidden;
         `}>
             <div className="header-left">
                 <Link to="/profile"><img src={user?.photoURL} alt={user?.displayName} className={css`

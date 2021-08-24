@@ -15,8 +15,8 @@ const [{user}, dispatch] = useStateValue();
         body: {
           margin: 0,
           padding: 0,
-          backgroundColor: '#7953f5',
-          
+          height: 100
+
         }
       }}
     />

@@ -1,0 +1,61 @@
+.home {
+    background-color: #7953f5;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+ }
+
+
+ 
+ .home {
+     height: 70vh;
+     width: 100vw;
+     display: flex;
+     justify-content: center;
+     align-items: center ;
+     flex-direction: column;
+     color: white;
+ }
+ 
+     .name {
+         font-size: 5rem;
+
+         margin: 0;
+     }
+     .company {
+         margin: 0;
+         font-size: 5rem;
+        margin-bottom: 2rem;
+        color: #ffffff;
+     }
+     .typewriter {
+         font-size: 2em;
+         font-family: 'Karla', sans-serif;
+         color: white;
+     }
+     .personal {
+         font-size: 1.4em;
+         margin-top: 2rem;
+         font-family: 'Karla', sans-serif;
+         color: #434b57;
+     }
+     
+     strong {
+         color: #14d18f;;
+     }
+     .main-btn {
+         height: 3rem; 
+         width: 12rem;
+         border-radius: 50px;
+         border: none;
+         margin-top: 1rem;
+         background-color: #14d18f;
+         color: white;
+         font-size: 1.3rem;
+     }
+ 
+ 
+ 
+ 

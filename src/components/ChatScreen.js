@@ -9,15 +9,17 @@ import {css} from '@emotion/css'
 
 function ChatScreen() {
     return (
-        <div className={css `height: 100vh; display: flex; overflow-x: hidden; `}>
-           <div className={css ` width: 20rem; `}>
+        <div className={css ` `}>
+           <div 
+           className={css `  `}
+           >
            <SideBar />
            </div>
            {/* <div className={css `display: grid; align-content: center; flex: 0.4`}>
            <Code />
        
            </div> */}
-           <div className={css `width: 80rem;`}>
+           <div className={css ``}>
            <Chat />
            </div>
             

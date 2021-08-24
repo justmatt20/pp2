@@ -2,13 +2,14 @@ import React, {useState, useEffect} from 'react'
 import SideBarElements from './SideBarElements'
 import db from '../firebase'
 import Header from './Header';
-import {useStateValue} from '../StateProvider';
 import {css} from '@emotion/css';
+import {useStateValue} from '../StateProvider';
 
 
 function SideBar() {
     const [channels, setChannel] = useState([]);
     const [{user}] = useStateValue();
+    
     useEffect(() => {
         db.collection('channels').onSnapshot(snapshot => (
             setChannel(snapshot.docs.map((doc) => ({
@@ -33,24 +34,21 @@ function SideBar() {
         <div >
             <Header />
             
-            {/* <div  className={css`
+            <div  className={css`
             width: 20vw;
-            margin-left: 5px;
             display: flex;
-            justify-content: center;`}>
+            justify-content: center;
+            `}>
                 <div className="info">
                     <h2>Code Collab Club</h2>
                 <div className="green-circle"></div>
-                <h3 className={css`
-            font-size: 18px;
-            
-            `}>{user?.displayName}</h3>
+                <h3 className={css`font-size: 18px; color: #7953f5; `}>{user?.displayName}</h3>
                 </div>
                 
-                </div> */}
-                <div className="channels">
-                {/* <hr></hr> */}
-                <h3 className={css`cursor: pointer; margin-left: 2rem; color: #D8D8D8`} onClick={addChannel}>Add Channel</h3>
+                </div>
+                <div className="max-width: 210px; height: 700px; overflow: hidden; position: absolute; background-repeat: repeat-y;">
+                <hr></hr>
+                <h3 className={css`cursor: pointer; margin-left: 2rem; `} onClick={addChannel}>Add Channel</h3>
                 {channels.map(channel => (
                     <SideBarElements title={channel.title} id={channel.id} />
                 ))}

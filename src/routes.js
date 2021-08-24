@@ -6,6 +6,7 @@ import Logout from './components/Logout';
 import Profile from './components/Profile';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Login from './components/Login';
+import EmailPage from './components/EmailPage';
 
 
 
@@ -17,6 +18,7 @@ export default(
          <Route path = "/logout" exact component={Logout}/>
          <Route path = "/profile"  exact component={Profile}/>
          <Route path = "/login" exact component={Login}/>
+         <Route path = "/emails" exact component={EmailPage}/>
 
         
         {/* <Route path = "/form" component={Form}/> */}

@@ -29,15 +29,14 @@ function Input({channelTitle, channelId}) {
     // }
     return (
         <div 
-        className={css `position: absolute; bottom: 0;`}
+        className={css ``}
         >
             <form>
                 <input className={css `
-                width: 28vw;
+                width: 77vw;
+                margin: 4px;
                 height: 2rem;
-                margin-bottom: 0.4rem;
                 border: 2px solid black;
-                margin-top: 2rem;
                 bottom 0;`}  wrap="soft" value={text} onChange={(e)=>setText(e.target.value)}placeholder={`Message #${channelTitle?.toLowerCase()}`}/>
                 <button className={css`
                 display: none !important;`}type="submit" onClick={sendComment}>send</button>

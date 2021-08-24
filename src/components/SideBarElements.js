@@ -1,5 +1,5 @@
-import React, {useParams} from 'react'
-import {Link, useHistory} from 'react-router-dom';
+import React from 'react'
+import { useHistory} from 'react-router-dom';
 import db from '../firebase';
 import {css} from '@emotion/css'
 
@@ -23,6 +23,9 @@ function SideBarElements({title, id, addChannelElement}) {
             
         }
     }
+
+   
+
         return (
         <div className={css`
         cursor: pointer;
@@ -30,6 +33,10 @@ function SideBarElements({title, id, addChannelElement}) {
        {/* <Link to="/channel/:channelId"> <h3><span className="hashtag">#</span>{title}</h3></Link> */}
        
        <h3 ><span>#</span>{title}</h3>
+       
+     
+        
+            
         </div>
     )
 }

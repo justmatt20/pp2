@@ -53,20 +53,20 @@ setQuery('')
   return (
    
     <div 
-    className={css `display: flex; justify-content: center; align-items: center; flex-direction: column;`}
+    className={css ``}
   
  
     >
       <div 
-      className={css `display: flex; justify-content: center; align-content: center; flex-direction: column;`}>
+      className={css ``}>
       <textarea 
-      className={css `display: flex; height: 5vh; width: 40vw; `}
+      className={css ` `}
       placeholder="ex. build an app that says 'Hooli' with an input field.  Add two buttons, one that says 'Hooli Search' and one that says 'I'm feeling Unlucky'"
           type="text"
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
-        <div className={css` display: flex; justify-content: center;`}>
+        <div className={css` `}>
         <button  className={css ``}
           type="button"
           onClick={() =>
@@ -81,7 +81,7 @@ setQuery('')
           {isLoading ? (
             <div>Generating your code...</div>
          ) : (
-           <span className={css `width: 40vw; color: #3D8D8D8; `}>
+           <span className={css ``}>
            {data}
            </span>
            )}
@@ -91,7 +91,7 @@ setQuery('')
       <div>
         <p className="tip">Remember to thoroughly read through your code.  Check and edit it in the sandbox.</p>
       </div>
-     <SandBox />
+     {/* <SandBox /> */}
     </div>
   );
 }
