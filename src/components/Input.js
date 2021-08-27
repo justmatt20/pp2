@@ -29,7 +29,7 @@ function Input({channelTitle, channelId}) {
     // }
     return (
         <div 
-        className={css ``}
+        className={css ` `}
         >
             <form>
                 <input className={css `
@@ -37,7 +37,8 @@ function Input({channelTitle, channelId}) {
                 margin: 4px;
                 height: 2rem;
                 border: 2px solid black;
-                bottom 0;`}  wrap="soft" value={text} onChange={(e)=>setText(e.target.value)}placeholder={`Message #${channelTitle?.toLowerCase()}`}/>
+                position: relative;
+                bottom: 0;`}  wrap="soft" value={text} onChange={(e)=>setText(e.target.value)}placeholder={`Message #${channelTitle?.toLowerCase()}`}/>
                 <button className={css`
                 display: none !important;`}type="submit" onClick={sendComment}>send</button>
             </form>

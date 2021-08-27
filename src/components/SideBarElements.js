@@ -1,10 +1,10 @@
 import React from 'react'
-import { useHistory} from 'react-router-dom';
+import { useHistory, useParams} from 'react-router-dom';
 import db from '../firebase';
 import {css} from '@emotion/css'
 
 function SideBarElements({title, id, addChannelElement}) {
-  
+   
     const history = useHistory();
     const selectChannel = () => {
             if(id){
@@ -23,13 +23,13 @@ function SideBarElements({title, id, addChannelElement}) {
             
         }
     }
-
+ 
    
 
         return (
         <div className={css`
         cursor: pointer;
-        margin-left: 2rem;`} onClick={addChannelElement ? addChannel : selectChannel}>
+        margin-left: 2rem; max-width: 160px; height: auto; overflow: hidden; background-repeat: repeat-y;`} onClick={addChannelElement ? addChannel : selectChannel}>
        {/* <Link to="/channel/:channelId"> <h3><span className="hashtag">#</span>{title}</h3></Link> */}
        
        <h3 ><span>#</span>{title}</h3>

@@ -30,7 +30,7 @@ function Header() {
         <div className={css`
         display: flex;
         width: 100 !important;
-        height: 139px;
+        height: 160px;
         align-items: center;
         justify-content: space-between;
         padding: 20px;
@@ -57,6 +57,17 @@ function Header() {
             text-decoration: none;
             `} onClick={logout}>Log out</p>
             {logout}
+            <div>
+            <div  className={css`
+            width: 20vw;
+            display: flex;
+            justify-content: center;
+            `}>
+           
+                
+                </div>
+               
+            </div>
             
         </div>
     )

@@ -4,6 +4,7 @@ import Login from './components/Login';
 import {useStateValue} from './StateProvider';
 import {css} from '@emotion/css'
 import {Global} from '@emotion/react';
+import Header from './components/Header';
 
 
 function App() {
@@ -23,8 +24,9 @@ const [{user}, dispatch] = useStateValue();
       {!user ? (
         <Login />
       ) : <> 
-     
-    {routes}
+      
+     {routes} 
+    
       
     </>
 }

@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {css} from "@emotion/css";
 import db from '../firebase';
 import firebase from 'firebase';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
-
 const OpenAI = require('openai-api');
 require('dotenv').config();
 
@@ -65,12 +63,6 @@ useEffect(() => {(async () => {
     setText(data)
 }
 
-// const onCopyText = () => {
-//   setIsCopied(true);
-//   setTimeout(() => {
-//     setIsCopied(false);
-//   }, 1000);
-// };
 
 return (
         
@@ -96,10 +88,10 @@ return (
           {isLoading ? (
             <div>Generating your message...</div>
          ) : (
-           <span   className={css `height: 40vh; width: 50vw; display: grid; align-items: center;`}>
+           <div  className={css `height: 40vh; width: 50vw; display: grid; align-items: center;`}>
            {data}
            
-           </span>
+           </div>
            )}
         
      

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {css} from "@emotion/css";
-import SandBox from './SandBox';
+
 
 const OpenAI = require('openai-api');
 require('dotenv').config();
@@ -91,7 +91,7 @@ setQuery('')
       <div>
         <p className="tip">Remember to thoroughly read through your code.  Check and edit it in the sandbox.</p>
       </div>
-     {/* <SandBox /> */}
+    
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link, useHistory} from 'react-router-dom'
 // import SideBar from './SideBar';
-// import Code from './Code';
+
 import db from '../firebase';
 import Comments from './Comments';
 import Input from './Input';
@@ -11,14 +11,22 @@ import EmailCode from './EmailCode';
 
 
 
-function Chat() {
+function Chat({id, title}) {
     const {channelId} = useParams();
     const [channel, setChannel] = useState(null)
     const [messages, setMessages] = useState([]);
+    const history = useHistory();
  
     
     
-  
+   
+//     const selectEmails = () => {
+//         if(id){
+//             history.push(`/emails/${id}`)
+//         }else{
+//             history.push(title)
+//         }
+// }
 
     const getChannel = () => {
         // if(channelId)
@@ -58,19 +66,21 @@ function Chat() {
         return (
             
         <div className={css``}>
-           <div className={css ` `}>
+           <div className={css ` position: absolute; bottom: 0;`}>
             <h3 className={css` color: #7953f5; margin: 10px;`}>
            <span className={css``}>#</span>
            {channel?.title}</h3>
-           <Link to='/emails'><h4 className={css`  margin: 10px; text-decoration: none;`}>{channel?.title} Emails</h4></Link>
+           <Link to="/emails"><h4 className={css`  margin: 10px; text-decoration: none;`}>{channel?.title} Emails</h4></Link>
             {/* optional chaining */}
             </div>
-            <div  className={css `height: auto; width: fit;
+            <div  className={css `height: 74vh; width: fit;
+            position: absolute; bottom: 0;
     padding: 20px;
     margin-left: 230px;
     margin-right: 20px;
     padding-bottom: 30px;
-    overflow: auto;  `}>
+    overflow-y: scroll;
+    `}>
             {
                     messages.length > 0 &&
                     messages.map((data)=>(
@@ -79,6 +89,7 @@ function Chat() {
                             user={data?.user}
                             image={data?.image}
                             timestamp={data.timestamp}
+                            id={data.id}
                         />
                     ))
                 }

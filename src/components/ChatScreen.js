@@ -2,7 +2,7 @@ import React from 'react'
 // import Header from './Header';
 import SideBar from './SideBar';
 import Code from './Code';
-import SandBox from './SandBox';
+
 import Chat from './Chat';
 import {css} from '@emotion/css'
 // import SideBarElements from './SideBarElements';
@@ -19,7 +19,7 @@ function ChatScreen() {
            <Code />
        
            </div> */}
-           <div className={css ``}>
+           <div className={css `height: 70vh; overflow-y: auto;`}>
            <Chat />
            </div>
             

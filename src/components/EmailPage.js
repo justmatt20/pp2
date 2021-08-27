@@ -11,8 +11,21 @@ import EmailCode from './EmailCode';
 function EmailPage() {
     const {channelId} = useParams();
     const [emails, setEmails] = useState([]);
+    const [channel, setChannel] = useState(null)
     
+
+
+    const getChannel = () => {
+        // if(channelId)
+        db.collection('channels')
+        .doc(channelId)
+        .onSnapshot((snapshot)=>{
+            setChannel(snapshot.data());
+        })
+        console.log(channel)
+    }
     const getEmails = () => {
+        if(channelId){
         db.collection('emails')
         .orderBy('timestamp', 'asc')
         .onSnapshot(snapshot => (
@@ -27,8 +40,8 @@ function EmailPage() {
         )
         );
         console.log(emails)
-    }
-
+    }}
+    
     useEffect(()=>{
         getEmails();
     }, [channelId])
