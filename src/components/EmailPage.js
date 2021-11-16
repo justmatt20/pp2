@@ -51,7 +51,7 @@ function EmailPage() {
         <div  className={css ``}>
             <Link to="/"><p>Home</p></Link>
             <EmailCode />
-            <div>
+            <div >
             {
                     emails.length > 0 &&
                     emails.map((data)=>(

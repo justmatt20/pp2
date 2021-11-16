@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import {css} from "@emotion/css";
 import db from '../firebase';
 import firebase from 'firebase';
@@ -7,18 +8,14 @@ require('dotenv').config();
 
 
 export default function Code({channelId}) {
-
-
-
 const openai = new OpenAI(process.env.REACT_APP_OPENAI_API_KEY);
 
-
-
+// const {channelId} = useParams();
 const [data, setData] = useState( '');
 const [query, setQuery] = useState();
 const [search, setSearch] = useState();
 const [isLoading, setIsLoading] = useState(false);
-const [text, setText] = useState("");
+const [text, setText] = useState('');
 // const [isCopied, setIsCopied] = useState(false);
 
 useEffect(() => {(async () => {
@@ -51,24 +48,33 @@ useEffect(() => {(async () => {
   }
 
   const saveEmail = (e) => {
-    e.preventDefault();
-    if (channelId) {
-        db.collection('channels')
-        .doc(channelId)
-        .collection('emails').add({
-        email: text,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        })
-    }
-    setText(data)
-}
+      e.preventDefault();
+      if (channelId) {
+          db.collection('channels')
+          .doc(channelId)
+          .collection('emails').add({
+          email: text,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          })
+      }
+      setText('')
+  }
 
+
+// const sendEmail = () => {
+//   if(channelId){
+//     db.collection('channels')
+//     .doc(channelId)
+
+//   }
+// }
 
 return (
         
-    <div className={css `width: 100vw; height: 50vh; display: grid; justify-content: center; align-items: center;`}>
+    <div className={css `width: 100vw; height: 50vh; display: grid; justify-content: center; align-items: center; background-color: #7953f5;`}>
       <div className={css `margin-top: 2rem; align-items: center;`}>
-        <h2>What would you like your email to say?</h2>
+        <p>Email</p>
+        <h2 className={css `color: white;  `}>What would you like your email to say?</h2>
       <textarea 
       className={css `width: 50vw; height: 4rem; `}
       placeholder="Tell Jeff congrats on his first mission to space. Would love to know how it felt to go that fast. Ask if he is looking for help to redesign rockets."
@@ -86,10 +92,13 @@ return (
          
           
           {isLoading ? (
-            <div>Generating your message...</div>
+            <div className={css `display: grid; align-items: center; color: white;`}>Generating your message...</div>
          ) : (
-           <div  className={css `height: 40vh; width: 50vw; display: grid; align-items: center;`}>
+           <div  className={css `height: 40vh; width: 50vw; display: grid; align-items: center; margin-top: 2rem;`}>
+           <textarea onChange={e => setText(e.target.value)}  className={css `height: 40vh; width: 50vw; display: grid; align-items: center; border: 1px solid #8766F5;`}>
            {data}
+             
+             </textarea>
            
            </div>
            )}
@@ -106,3 +115,4 @@ return (
 
 
 
+// Tell Tim I love Nike shoes. Ask about tools Nike uses for sizing automation.
